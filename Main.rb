@@ -1,11 +1,18 @@
 # encoding: UTF-8
 require 'fileutils'
-require_relative "FoncsLib"
-t1 = Time.now
-articles = Dir["Articles/**/*"].select{|i|File.directory?(i)}
+require 'json'
+require_relative "Article.rb"
 
-t2 = Time.now
-puts t2 - t1
+args = ARGV
+if args != []
+	main_dir = args[0]
+else
+  main_dir = "Test"
+end
+config = File.open("#{main_dir}/config.json"){|i| i.read}
+config = JSON.parse(config)
+
+#articles = Dir["Articles/*"].select{|i|File.directory?(i)}.map { |e| Article.new(e) }
 
 =begin
 if File.exist?("Output")
