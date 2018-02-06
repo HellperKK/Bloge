@@ -1,8 +1,8 @@
 {
   "author" : "HellperKK",
   "title" : "Just to say hi",
+  "desc" : "Where I just say hi to you",
   "date" : "29/01/2018",
-  "subject" : "other",
   "key_words" : ["start", "happy", "joy"],
   "main" : "index.html"
 }
