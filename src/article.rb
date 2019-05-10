@@ -15,7 +15,7 @@ class Article
     @config.default = ""
 
     # charge l'article
-    @article = File.open("#{@path}/#{@config["article"]}", "r"){|file| file.read}
-    puts PandocRuby.convert(@article, :from => :markdown, :to => :html)
+    article = File.open("#{@path}/#{@config["article"]}", "r"){|file| file.read}
+    @article = PandocRuby.convert(article, :from => :markdown, :to => :html)
   end
 end
