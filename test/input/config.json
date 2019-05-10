@@ -1,0 +1,6 @@
+{
+  "title" : "My new blog",
+  "subtitle" : "Where I speak about trains !",
+  "main_template" : "main.html",
+  "artices" : "artices"
+}
