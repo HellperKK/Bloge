@@ -1,9 +1,10 @@
 require 'json'
 require 'fileutils'
 require 'pandoc-ruby'
+require 'date'
 
 class Article
-  attr_reader :path, :title
+  attr_reader :path, :title, :date
   def initialize(path, template_path)
     # definit le chemin de l'article
     @path = path
@@ -18,6 +19,12 @@ class Article
 
     # definit le titre
     @title = @config["title"]
+
+    # definit la date
+    date = @config["date"]
+    date = /(\d{2})\/(\d{2})\/(\d{4})/.match(date)
+    raise "wrong date format" unless date
+    @date = Date.new(date[3].to_i, date[2].to_i, date[1].to_i)
 
     # charge l'article
     article = File.open("#{@path}/#{@config["article"]}", "r"){|file| file.read}

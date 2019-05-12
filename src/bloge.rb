@@ -57,13 +57,17 @@ class Bloge
   end
 
   def format_links
-    links = @articles.map do |i|
+    # cree les liens vers les articles
+    links = @articles.sort{|fst, snd| fst.date <=> snd.date}.map do |i|
       out = i.path.sub("#{@input_path}", ".")
       "<a href='#{out}'>#{i.title}</a>"
-    end.join("\n")
+    end.join("\n<br>\n")
     @content.gsub!("{links}",  links)
   end
 end
 
-blog = Bloge.new("test/input", "test/output")
+args = ARGV
+raise "Not enough arguments" if args.length < 2
+
+blog = Bloge.new(args[0], args[1])
 blog.generate
