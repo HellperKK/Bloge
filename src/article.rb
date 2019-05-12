@@ -1,4 +1,5 @@
 require 'json'
+require 'fileutils'
 require 'pandoc-ruby'
 
 class Article
@@ -33,5 +34,11 @@ class Article
     path = @path.sub(input_path, output_path)
     Dir.mkdir(path)
     File.open("#{path}/index.html", "w"){|file| file.write(@article)}
+
+    files = Dir["#{@path}/*"].select{|file| File.file?(file)}
+      .select{|file| ! [".json", ".md"].include?(File.extname(file))}
+    files.each do |elem|
+      FileUtils.cp(elem, elem.sub(@path, path))
+    end
   end
 end
