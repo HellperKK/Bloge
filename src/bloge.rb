@@ -17,7 +17,6 @@ class Bloge
     # charge les articles
     @articles = Dir["#{@input_path}/#{@config["articles"]}/*"]
       .map{|path| Article.new(path, "#{@input_path}/#{@config["article_template"]}")}
-    # puts @articles.to_s
 
     @content = ""
   end
