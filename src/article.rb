@@ -39,7 +39,7 @@ class Article
   end
   def generate(input_path, output_path)
     path = @path.sub(input_path, output_path)
-    Dir.mkdir(path)
+    Dir.mkdir(path)  unless File.directory?(path)
     File.open("#{path}/index.html", "w"){|file| file.write(@article)}
 
     files = Dir["#{@path}/*"].select{|file| File.file?(file)}

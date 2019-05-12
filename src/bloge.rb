@@ -23,14 +23,14 @@ class Bloge
 
   def generate
     # detruit le repertoire de destination s'il existe
-    if File.directory?(@output_path)
+    if File.directory?(@output_path) && ARGV.include?("-clean")
       FileUtils.rm_r(@output_path)
     end
 
     # cree le repertoire de destination
-    Dir.mkdir(@output_path)
-    Dir.mkdir("#{@output_path}/articles")
-    Dir.mkdir("#{@output_path}/ressources")
+    Dir.mkdir(@output_path) unless File.directory?(@output_path)
+    Dir.mkdir("#{@output_path}/articles") unless File.directory?("#{@output_path}/articles")
+    Dir.mkdir("#{@output_path}/ressources") unless File.directory?("#{@output_path}/ressources")
     FileUtils.cp("#{@input_path}/ressources/style.css", "#{@output_path}/ressources/style.css")
 
     # cree le fichier principal
