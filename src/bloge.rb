@@ -67,7 +67,9 @@ class Bloge
 end
 
 args = ARGV
-raise "Not enough arguments" if args.length < 2
-
-blog = Bloge.new(args[0], args[1])
-blog.generate
+if args.length >= 2
+  blog = Bloge.new(args[0], args[1])
+  blog.generate
+else
+  puts "You must provide input and output path"
+end
