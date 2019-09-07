@@ -1,7 +1,0 @@
-{
-  "title" : "My new blog",
-  "subtitle" : "Where I speak about trains !",
-  "main_template" : "ressources/main.html",
-  "article_template" : "ressources/article.html",
-  "articles" : "articles"
-}
