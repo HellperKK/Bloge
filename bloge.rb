@@ -49,7 +49,7 @@ class CLIManager < Thor
     Dir.mkdir(name)
     config = {
       title: options[:title],
-      articles: Time.now.to_s
+      creation_date: Time.now.to_s
     }
     save_config(JSON.generate(config), "#{name}/data.json")
   end
